@@ -14,9 +14,9 @@ const Header = () => {
 
     let Links = [
         { name: 'Home', to: '/' },
-        // { name: 'Posts', to: '/posts' },
-        { name: 'About', to: '/aboutus' },
-        { name: 'Contact', to: '/contactus' }
+        { name: 'AutoParts', to: '/parts' },
+        { name: 'Services', to: '/services' },
+        { name: 'Stafs', to: '/Stafs' }
     ];
 
     // console.log(user);
@@ -45,7 +45,7 @@ const Header = () => {
                         (user && admin) && <li className='md:ml-8 text-md capitalize md:my-0 my-5'><NavLink reloadDocument className={({ isActive }) => (isActive ? 'text-[#0f52ba] duration-300 border-b-2 border-[#0f52ba]' : 'text-gray-800 duration-100')} to="/cpanel">Control Panel</NavLink></li>
                     } */}
                     {
-                        user ? <div className="pl-5"><Authentication /></div> : <div className="" onClick={() => navigate('/signin')}><button className='mx-5 py-2 px-5 rounded bg-purple-500 text-white'>SignIn</button></div>
+                        user ? <div className="pl-7"><Authentication /></div> : <div className="" onClick={() => navigate('/signin')}><button className='mx-5 py-2 px-5 rounded bg-purple-500 text-white'>SignIn</button></div>
                     }
 
                 </ul>

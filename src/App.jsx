@@ -17,6 +17,9 @@ import Header from './Pages/Shared/Header/Header'
 import Footer from './Pages/Shared/Footer/Footer'
 import { Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
+import AutoParts from './Pages/AutoParts/AutoParts'
+import Services from './Pages/Services/Services'
+import Stafs from './Pages/Stafs/Stafs'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,6 +32,9 @@ function App() {
         <div className="">
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/parts' element={<AutoParts />} />
+            <Route path='/services' element={<Services />} />
+            <Route path='/stafs' element={<Stafs />} />
             <Route path='/cart' element={<RequireAuth><Cart /></RequireAuth>} />
             {/* <Route path='/checkout' element={<RequireAuth><Checkout /></RequireAuth>} /> */}
             {/* <Route path="/ssl-payment-success/:id" element={<RequireAuth><Success/></RequireAuth>} /> */}
