@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
-const UseToken = () => {
-    const [user] = useAuthState(auth);
+const UseToken = (user) => {
+    // const [user] = useAuthState(auth);
     const [token, setToken] = useState('');
     console.log(user);
     useEffect(() => { 
-        const email = user?.email;
-        const displayName = user?.displayName;
+        const email = user?.user?.email;
+        const displayName = user?.user?.displayName;
 
         const currentUser = {
             displayName: displayName,
@@ -17,7 +17,7 @@ const UseToken = () => {
 
 
         if (email) {
-            fetch(`https://emotion-products-server.up.railway.app/api/v1/users/${email}`, {
+            fetch(`http://localhost:5000/api/v1/users/${email}`, {
                 method: 'PUT',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(currentUser)

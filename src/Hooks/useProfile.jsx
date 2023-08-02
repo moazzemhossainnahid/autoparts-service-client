@@ -6,9 +6,14 @@ const useProfile = () => {
     const [user] = useAuthState(auth);
     const [profile, setProfile] = useState([]);
     const email = user?.email;
- 
+
     useEffect(() => {
-        fetch(`https://emotion-products-server.up.railway.app/api/v1/users/${email}`)
+        fetch(`http://localhost:5000/api/v1/users/${email}`, {
+            method: "GET",
+            headers: {
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            }
+        })
             .then(res => res.json())
             .then(data => setProfile(data))
     }, [email]);

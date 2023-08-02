@@ -3,8 +3,8 @@ import { toast } from 'react-toastify';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import { signOut } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import UseAdmin from '../../../Hooks/useAdmin';
 
 
@@ -12,6 +12,8 @@ const Authentication = () => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
     const [admin] = UseAdmin();
+
+
 
     const handleSignOut = async () => {
         await signOut(auth)
@@ -28,8 +30,8 @@ const Authentication = () => {
                 // user ? <button onClick={handleSignOut} >SignOut</button> : <NavLink to="/signin">SignIn Your Account</NavLink>
                 user &&
                 <div className="dropdown dropdown-end">
-                    <div className="flex md:w-44 md:border border-x-primary mx-auto rounded md:px-5 py-1 items-center justify-between ">
-                        <div className="hidden md:block">
+                    <div className="flex w-44 border border-x-primary mx-auto rounded px-5 py-1 items-center justify-between ">
+                        <div className="">
                             <h3 className="text-primary text-xs">{user?.displayName?.slice(0, 10)}</h3>
                         </div>
                         <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
@@ -41,10 +43,11 @@ const Authentication = () => {
                         </label>
                     </div>
                     <ul tabIndex="0" className="mt-3 p-2 gap-1 shadow menu menu-compact dropdown-content text-gray-600 bg-slate-200 rounded-box w-52">
-                        <li> <NavLink reloadDocument to="/profile" className="justify-between"> Profile <span className="badge">New</span> </NavLink> </li>
+                        <li> <Link to="/profile" className="justify-between text-sm"> Profile <span className="badge">New</span> </Link> </li>
                         {
-                            (user && admin) && <li> <NavLink reloadDocument className={({ isActive }) => (isActive ? 'text-[#0f52ba] duration-300 border-b-2 border-[#0f52ba]' : 'text-gray-800 duration-100')} to="/cpanel">Control Panel</NavLink></li>
+                            (user && admin) && <li> <NavLink reloadDocument className={({ isActive }) => (isActive ? 'text-[#0f52ba] duration-300 border-b-2 border-[#0f52ba]' : 'text-gray-800 duration-100 text-sm')} to="/cpanel">Control Panel</NavLink></li>
                         }
+                        <li><Link className=' text-sm' to="/mypost">My Post</Link></li>
                         <li><button onClick={handleSignOut}>Sign Out</button></li>
                     </ul>
                 </div>

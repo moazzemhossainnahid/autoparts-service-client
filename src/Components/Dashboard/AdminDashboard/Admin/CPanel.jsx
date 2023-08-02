@@ -3,7 +3,7 @@ import Sidebar from './Sidebar/Sidebar';
 
 const CPanel = () => {
     return (
-        <div className='bg-white pt-20'>
+        <div className='bg-white'>
             <Sidebar/>
         </div>
     );

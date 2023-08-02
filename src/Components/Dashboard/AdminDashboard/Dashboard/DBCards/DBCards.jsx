@@ -7,35 +7,70 @@ const DBCards = () => {
 
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
-    const [products, setProducts] = useState([]);
+    const [parts, setParts] = useState([]);
     const [orders, setOrders] = useState([]);
-    const [appointments, setAppointments] = useState([]);
+    const [services, setServices] = useState([]);
+    const [stafs, setStafs] = useState([]);
 
     useEffect(() => {
-        fetch(`https://emotion-products-server.up.railway.app/api/v1/users`)
+        fetch(`http://localhost:5000/api/v1/users`, {
+            method: "GET",
+            headers: {
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            }
+        })
             .then(res => res.json())
             .then(data => setUsers(data))
     }, []);
 
 
     useEffect(() => {
-        fetch(`https://emotion-products-server.up.railway.app/api/v1/products`)
+        fetch(`http://localhost:5000/api/v1/parts`, {
+            method: "GET",
+            headers: {
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            }
+        })
             .then(res => res.json())
-            .then(data => setProducts(data))
+            .then(data => setParts(data?.data?.result))
     }, [])
 
     useEffect(() => {
-        fetch(`https://emotion-products-server.up.railway.app/api/v1/orders`)
+        fetch(`http://localhost:5000/api/v1/orders`, {
+            method: "GET",
+            headers: {
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            }
+        })
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
 
     useEffect(() => {
-        fetch(`https://emotion-products-server.up.railway.app/api/v1/appointments`)
+        fetch(`http://localhost:5000/api/v1/services`, {
+            method: "GET",
+            headers: {
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            }
+        })
             .then(res => res.json())
-            .then(data => setAppointments(data))
+            .then(data => setServices(data?.data?.result))
     }, [])
 
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/api/v1/stafs`, {
+            method: "GET",
+            headers: {
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            }
+        })
+            .then(res => res.json())
+            .then(data => setStafs(data?.data?.result))
+    }, [])
+
+
+    console.log(stafs);
 
     return (
         <div className=''>
@@ -59,14 +94,14 @@ const DBCards = () => {
                 <div className="">
                     <div className="flex items-center justify-between bg-[#17A2BB] p-3 rounded-t-xl">
                         <div className="">
-                            <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">{products?.length}</h3>
-                            <h3 className="text-md font-bold text-white">Total Products</h3>
+                            <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">{parts?.length}</h3>
+                            <h3 className="text-md font-bold text-white">Total Parts</h3>
                         </div>
                         <div className="">
                             <FontAwesomeIcon className='text-[#42424281] text-3xl md:text-4xl' icon={faCartShopping} />
                         </div>
                     </div>
-                    <div onClick={() => navigate('/cpanel/mproducts')} className="bg-[#0c93ab] cursor-pointer py-2 text-center rounded-b-xl">
+                    <div onClick={() => navigate('/cpanel/mparts')} className="bg-[#0c93ab] cursor-pointer py-2 text-center rounded-b-xl">
                         <h2 className="text-md text-white">More Info <FontAwesomeIcon className='pl-2' icon={faArrowAltCircleRight} /> </h2>
                     </div>
                 </div>
@@ -86,18 +121,34 @@ const DBCards = () => {
                     </div>
                 </div>
 
-                {/* Total Appointments */}
+                {/* Total Services */}
                 <div className="">
                     <div className="flex items-center justify-between bg-[#219422] p-3 rounded-t-xl">
                         <div className="">
-                            <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">{appointments?.length}</h3>
-                            <h3 className="text-md font-bold text-white">Total Appointments</h3>
+                            <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">{services?.length}</h3>
+                            <h3 className="text-md font-bold text-white">Total Services</h3>
                         </div>
                         <div className="">
                             <FontAwesomeIcon className='text-[#42424281] text-3xl md:text-4xl' icon={faBookAtlas} />
                         </div>
                     </div>
-                    <div onClick={() => navigate('/cpanel/mappointments')} className="bg-[#186e1a] cursor-pointer py-2 text-center rounded-b-xl">
+                    <div onClick={() => navigate('/cpanel/mservices')} className="bg-[#186e1a] cursor-pointer py-2 text-center rounded-b-xl">
+                        <h2 className="text-md text-white">More Info <FontAwesomeIcon className='pl-2' icon={faArrowAltCircleRight} /> </h2>
+                    </div>
+                </div>
+
+                {/* Total Stafs */}
+                <div className="">
+                    <div className="flex items-center justify-between bg-[#572194b9] p-3 rounded-t-xl">
+                        <div className="">
+                            <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">{stafs?.length}</h3>
+                            <h3 className="text-md font-bold text-white">Total Stafs</h3>
+                        </div>
+                        <div className="">
+                            <FontAwesomeIcon className='text-[#42424281] text-3xl md:text-4xl' icon={faBookAtlas} />
+                        </div>
+                    </div>
+                    <div onClick={() => navigate('/cpanel/mstafs')} className="bg-[#572194ea] cursor-pointer py-2 text-center rounded-b-xl">
                         <h2 className="text-md text-white">More Info <FontAwesomeIcon className='pl-2' icon={faArrowAltCircleRight} /> </h2>
                     </div>
                 </div>
