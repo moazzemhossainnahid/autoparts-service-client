@@ -20,6 +20,7 @@ import { ToastContainer } from 'react-toastify'
 import AutoParts from './Pages/AutoParts/AutoParts'
 import Services from './Pages/Services/Services'
 import Stafs from './Pages/Stafs/Stafs'
+import ManageParts from './Components/Dashboard/AdminDashboard/ManageParts/ManageParts'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -49,8 +50,8 @@ function App() {
               <Route index element={<AdDashboard />} />
               <Route path="addashboard" element={<AdDashboard />} />
               <Route path="musers" element={<ManageUsers />} />
-              {/* <Route path="mproducts" element={<ManageProducts />} />
-              <Route path="morders" element={<ManageOrders />} />
+              <Route path="mparts" element={<ManageParts />} />
+              {/* <Route path="morders" element={<ManageOrders />} />
               <Route path="mappointments" element={<ManageAppointments />} /> */}
             </Route>
           </Routes>

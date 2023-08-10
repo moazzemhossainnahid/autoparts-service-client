@@ -81,7 +81,7 @@ const Profile = () => {
                                 {/* <label for="my-modal-3" class="btn modal-button">open modal</label> */}
                             </div>
                             <div className="py-3">
-                                <span className="btn btn-xs text-white">Status: <span className="font-bold pl-2">{profile?.status}</span></span>
+                                <span className="btn btn-xs bg-gray-700 text-white">Status: <span className="font-bold pl-2">{profile?.status}</span></span>
                             </div>
 
                             <span className="text-gray-600">This information is secret so be careful</span>
