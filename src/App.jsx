@@ -21,6 +21,7 @@ import AutoParts from './Pages/AutoParts/AutoParts'
 import Services from './Pages/Services/Services'
 import Stafs from './Pages/Stafs/Stafs'
 import ManageParts from './Components/Dashboard/AdminDashboard/ManageParts/ManageParts'
+import ManageServices from './Components/Dashboard/AdminDashboard/ManageServices/ManageServices'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -51,8 +52,7 @@ function App() {
               <Route path="addashboard" element={<AdDashboard />} />
               <Route path="musers" element={<ManageUsers />} />
               <Route path="mparts" element={<ManageParts />} />
-              {/* <Route path="morders" element={<ManageOrders />} />
-              <Route path="mappointments" element={<ManageAppointments />} /> */}
+              <Route path="mservices" element={<ManageServices />} />
             </Route>
           </Routes>
         </div>

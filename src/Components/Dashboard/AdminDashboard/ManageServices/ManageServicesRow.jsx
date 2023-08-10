@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ManageProductsRow = ({ product, index, setDeleteProduct }) => {
+const ManageServicesRow = ({ service, index, setDeleteService}) => {
 
-    const { createdAt, customerId, delivery_status, paymentIntentId, payment_status, products, shipping, userId, _id } = product;
+    const { name, image, category, price } = service;
 
     return (
         <tr className="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
@@ -12,23 +12,23 @@ const ManageProductsRow = ({ product, index, setDeleteProduct }) => {
             </td>
             <td className="w-full lg:w-auto p-2 text-sm text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                 <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Product</span>
-                {products && products[0]?.name}
+                <img src={image} alt="" className="w-12 h-12 rounded-full p-1" />
             </td>
             <td className="w-full lg:w-auto p-2 text-sm text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                 <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">customerId</span>
-                {customerId} <br />
+                {name} <br />
             </td>
             <td className="w-full lg:w-auto p-2 text-sm text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                 <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Order Date</span>
-                {createdAt}
+                {category}
             </td>
             <td className="w-full lg:w-auto p-2 font-bold text-green-700 text-sm text-center border border-b block lg:table-cell relative lg:static">
                 <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">Payment Status</span>
-                {payment_status}
+                {price}
             </td>
             <td className="w-full lg:w-auto text-xs p-2 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                 <div className="flex justify-between px-3 pb-1 gap-2 items-center">
-                    <label htmlFor="delete-product-modal" onClick={() => setDeleteProduct(product)} className="btn text-white btn-secondary btn-xs">Delete Product</label>
+                    <label htmlFor="delete-service-modal" onClick={() => setDeleteService(service)} className="btn text-white btn-secondary btn-xs">Delete Service</label>
                 </div>
 
             </td>
@@ -36,4 +36,4 @@ const ManageProductsRow = ({ product, index, setDeleteProduct }) => {
     );
 };
 
-export default ManageProductsRow;
+export default ManageServicesRow;
