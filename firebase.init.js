@@ -7,12 +7,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDtPVeUlrqmSHG8KwQBPpyaXwCey03d010",
-    authDomain: "autoparts-services.firebaseapp.com",
-    projectId: "autoparts-services",
-    storageBucket: "autoparts-services.appspot.com",
-    messagingSenderId: "351334909423",
-    appId: "1:351334909423:web:b8af2bd4c2b5372f58a21a"
+  apiKey: "AIzaSyBJhI_1SYd8lG3OjKl7G1mgrgOr3-8uZZo",
+  authDomain: "autoparts-service.firebaseapp.com",
+  projectId: "autoparts-service",
+  storageBucket: "autoparts-service.appspot.com",
+  messagingSenderId: "1004490202855",
+  appId: "1:1004490202855:web:50645502ac4cb9db6b4c42"
 };
     
 // Initialize Firebase
