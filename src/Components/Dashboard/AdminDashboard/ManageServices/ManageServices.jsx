@@ -149,7 +149,7 @@ const ManageServices = () => {
           >
             ✕
           </label>
-          <h3 class="text-lg font-bold">Please Add New Service Indormation</h3>
+          <h3 class="text-lg font-bold">Please Add New Service Ifdormation</h3>
           <form
             onSubmit={handleSubmit(handleAddService)}
             action=""
@@ -188,7 +188,7 @@ const ManageServices = () => {
             <input
               {...register("photoURL")}
               type="file"
-              placeholder="Enter Your Password"
+              placeholder="Enter Your Image"
               className="file-input file-input-bordered bg-slate-100 my-2 items-center w-full mx-auto block max-w-xs"
             />
             <input
