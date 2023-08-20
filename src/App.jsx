@@ -30,7 +30,7 @@ function App() {
   return (
     <>
       <div className="App pt-20">
-        {(window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mparts' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs') && <Header />}
+        {(window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mparts' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf') && <Header />}
         {/* <Header /> */}
         <div className="">
           <Routes>
