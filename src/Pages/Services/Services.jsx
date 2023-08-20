@@ -1,9 +1,10 @@
 import React from 'react';
+import AllServices from '../../Components/Pages/Services/AllServices';
 
 const Services = () => {
     return (
-        <div>
-            
+        <div className='w-full'>
+            <AllServices/>
         </div>
     );
 };

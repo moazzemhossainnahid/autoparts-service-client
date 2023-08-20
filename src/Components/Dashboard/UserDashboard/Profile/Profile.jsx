@@ -88,7 +88,7 @@ const Profile = () => {
                             <div className="w-full h-fit p-8 mx-2 flex justify-center">
                                 <img id="showImage" className="max-w-xs w-32 items-center border-2 rounded shadow " src={user?.photoURL ? user?.photoURL : "https://www.shareicon.net/data/2016/05/26/771188_man_512x512.png"} alt="" />
                             </div>
-                            <div className="flex justify-end py-3 hidden">
+                            <div className=" justify-end py-3 hidden">
                                 <label for="my-modal-3" className="mt-2 text-md font-bold text-right  text-white bg-gray-700 rounded-full px-5 py-2 hover:bg-gray-800">Edit</label>
                             </div>
 
