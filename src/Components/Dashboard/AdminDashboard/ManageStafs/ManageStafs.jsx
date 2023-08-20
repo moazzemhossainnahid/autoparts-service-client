@@ -63,7 +63,7 @@ const ManageStafs = () => {
       });
   };
 
-  console.log(stafs);
+//   console.log(stafs);
 
   return (
     <div className=" text-left h-full w-full">

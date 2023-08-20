@@ -7,7 +7,7 @@ const DeleteOrderModal = ({ deleteOrder, setNumber, number }) => {
 
 
     const handleDelete = (id) => {
-        const url = `https://emotion-products-server.up.railway.app/api/v1/orders/${id}`;
+        const url = `http://localhost:5000/api/v1/orders/${id}`;
         fetch(url, {
             method: 'DELETE'
         })

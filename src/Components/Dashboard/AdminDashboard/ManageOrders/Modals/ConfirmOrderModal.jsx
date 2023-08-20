@@ -8,7 +8,7 @@ const ConfirmOrderModal = ({ confirmOrder, setNumber, number }) => {
     // console.log(confirmOrder);
 
     const handleConfirmOrder = (id) => {
-        const url = `https://emotion-products-server.up.railway.app/api/v1/orders/${id}`;
+        const url = `http://localhost:5000/api/v1/orders/${id}`;
         fetch(url, {
             method: 'PUT'
         })

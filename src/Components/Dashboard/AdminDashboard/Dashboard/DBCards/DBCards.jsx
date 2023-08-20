@@ -1,4 +1,4 @@
-import { faArrowAltCircleRight, faBookAtlas, faCartShopping, faListCheck, faPenToSquare, faRoadLock, faUserPlus, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleRight, faBookAtlas, faBraille, faCartShopping, faListCheck, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -35,16 +35,6 @@ const DBCards = () => {
             .then(data => setParts(data?.data?.result))
     }, [])
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/api/v1/orders`, {
-            method: "GET",
-            headers: {
-                authorization: `bearer ${localStorage.getItem("accessToken")}`,
-            }
-        })
-            .then(res => res.json())
-            .then(data => setOrders(data))
-    }, [])
 
     useEffect(() => {
         fetch(`http://localhost:5000/api/v1/services`, {
@@ -69,6 +59,17 @@ const DBCards = () => {
             .then(data => setStafs(data?.data?.result))
     }, [])
 
+    
+    useEffect(() => {
+        fetch(`http://localhost:5000/api/v1/orders`, {
+            method: "GET",
+            headers: {
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            }
+        })
+            .then(res => res.json())
+            .then(data => setOrders(data))
+    }, [])
 
     console.log(stafs);
 
@@ -105,22 +106,6 @@ const DBCards = () => {
                         <h2 className="text-md text-white">More Info <FontAwesomeIcon className='pl-2' icon={faArrowAltCircleRight} /> </h2>
                     </div>
                 </div>
-                {/* Total Orders */}
-                <div className="">
-                    <div className="flex items-center justify-between bg-[#097c76] p-3 rounded-t-xl">
-                        <div className="">
-                            <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">{orders?.length} </h3>
-                            <h3 className="text-md font-bold text-white">Total Orders</h3>
-                        </div>
-                        <div className="">
-                            <FontAwesomeIcon className='text-[#42424281] text-3xl md:text-4xl' icon={faListCheck} />
-                        </div>
-                    </div>
-                    <div onClick={() => navigate('/cpanel/morders')} className="bg-[#00A099] cursor-pointer py-2 text-center rounded-b-xl">
-                        <h2 className="text-md text-white">More Info <FontAwesomeIcon className='pl-2' icon={faArrowAltCircleRight} /> </h2>
-                    </div>
-                </div>
-
                 {/* Total Services */}
                 <div className="">
                     <div className="flex items-center justify-between bg-[#219422] p-3 rounded-t-xl">
@@ -129,7 +114,7 @@ const DBCards = () => {
                             <h3 className="text-md font-bold text-white">Total Services</h3>
                         </div>
                         <div className="">
-                            <FontAwesomeIcon className='text-[#42424281] text-3xl md:text-4xl' icon={faBookAtlas} />
+                            <FontAwesomeIcon className='text-[#42424281] text-3xl md:text-4xl' icon={faBraille} />
                         </div>
                     </div>
                     <div onClick={() => navigate('/cpanel/mservices')} className="bg-[#186e1a] cursor-pointer py-2 text-center rounded-b-xl">
@@ -152,6 +137,23 @@ const DBCards = () => {
                         <h2 className="text-md text-white">More Info <FontAwesomeIcon className='pl-2' icon={faArrowAltCircleRight} /> </h2>
                     </div>
                 </div>
+
+                                {/* Total Orders */}
+                                <div className="">
+                    <div className="flex items-center justify-between bg-[#097c76] p-3 rounded-t-xl">
+                        <div className="">
+                            <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">{orders?.length} </h3>
+                            <h3 className="text-md font-bold text-white">Total Orders</h3>
+                        </div>
+                        <div className="">
+                            <FontAwesomeIcon className='text-[#42424281] text-3xl md:text-4xl' icon={faListCheck} />
+                        </div>
+                    </div>
+                    <div onClick={() => navigate('/cpanel/morders')} className="bg-[#00A099] cursor-pointer py-2 text-center rounded-b-xl">
+                        <h2 className="text-md text-white">More Info <FontAwesomeIcon className='pl-2' icon={faArrowAltCircleRight} /> </h2>
+                    </div>
+                </div>
+
 
             </div>
 
