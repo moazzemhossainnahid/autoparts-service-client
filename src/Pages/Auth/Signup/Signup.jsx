@@ -52,7 +52,7 @@ const Signup = () => {
                 navigate("/signin");
                 toast.success('Verification Email Sent Successfully');
             })
-    }
+    };
 
 
 

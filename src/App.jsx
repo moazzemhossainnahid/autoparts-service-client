@@ -22,6 +22,7 @@ import Services from './Pages/Services/Services'
 import Stafs from './Pages/Stafs/Stafs'
 import ManageParts from './Components/Dashboard/AdminDashboard/ManageParts/ManageParts'
 import ManageServices from './Components/Dashboard/AdminDashboard/ManageServices/ManageServices'
+import ManageStafs from './Components/Dashboard/AdminDashboard/ManageStafs/ManageStafs'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -53,6 +54,7 @@ function App() {
               <Route path="musers" element={<ManageUsers />} />
               <Route path="mparts" element={<ManageParts />} />
               <Route path="mservices" element={<ManageServices />} />
+              <Route path="mstafs" element={<ManageStafs />} />
             </Route>
           </Routes>
         </div>
