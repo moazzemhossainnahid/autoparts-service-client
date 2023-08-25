@@ -1,9 +1,9 @@
 import React from "react";
-import useStafs from "../../../Hooks/useStafs";
+import UseStafs from "../../../Hooks/useStafs";
 import AllStafsGrid from "./AllStafsGrid";
 
 const AllStafs = () => {
-  const [stafs] = useStafs();
+  const [stafs] = UseStafs();
 
   console.log(stafs);
   return (

@@ -23,6 +23,8 @@ import Stafs from './Pages/Stafs/Stafs'
 import ManageParts from './Components/Dashboard/AdminDashboard/ManageParts/ManageParts'
 import ManageServices from './Components/Dashboard/AdminDashboard/ManageServices/ManageServices'
 import ManageStafs from './Components/Dashboard/AdminDashboard/ManageStafs/ManageStafs'
+import SinglePartsDetails from './Components/Pages/Parts/SinglePartsDetails'
+import SingleServicesDetails from './Components/Pages/Services/SingleServicesDetails'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -36,7 +38,9 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/parts' element={<AutoParts />} />
+            <Route path='/parts/:id' element={<RequireAuth><SinglePartsDetails /></RequireAuth>} />
             <Route path='/services' element={<Services />} />
+            <Route path='/services/:id' element={<RequireAuth><SingleServicesDetails /></RequireAuth>} />
             <Route path='/stafs' element={<Stafs />} />
             <Route path='/cart' element={<RequireAuth><Cart /></RequireAuth>} />
             {/* <Route path='/checkout' element={<RequireAuth><Checkout /></RequireAuth>} /> */}
@@ -58,7 +62,7 @@ function App() {
             </Route>
           </Routes>
         </div>
-        {(window.location.pathname !== '/cart' && window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mparts' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs') && <Footer />}
+        {(window.location.pathname !== '/cart' && window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mparts' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf') && <Footer />}
         <ToastContainer />
       </div>
     </>

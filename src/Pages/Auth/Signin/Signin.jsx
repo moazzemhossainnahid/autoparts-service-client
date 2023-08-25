@@ -50,9 +50,11 @@ const Signin = () => {
     if (token) {
         navigate(from, { replace: true });
         toast.success("Signin User Successfully")
+        window.location.reload();
     }
 
     const handleSigninform = async (data) => {
+      console.log(data);
         const email = data.email;
         const password = data.password;
         await signInWithEmailAndPassword(email, password)
@@ -67,8 +69,8 @@ const Signin = () => {
     }
 
     const handleReset = async () => {
-        const email = emailRef.current.value
-        await sendPasswordResetEmail(email)
+        const email = emailRef.current.value;
+        await sendPasswordResetEmail(email);
         toast.success(`Email Sent to ${email}!`);
     }
 
@@ -78,9 +80,9 @@ const Signin = () => {
         <div className="h-full bg-white w-full px-4">
             <div className="flex flex-col items-center justify-center">
                 <div className="bg-white rounded md:w-2/3 w-full p-10 ">
-                    {/* <div className="w-full mx-auto py-7">
+                    <div className="w-full mx-auto py-7">
                         <img src="https://i.ibb.co/7VySsQR/logo.png" alt="" className="w-52 mx-auto" />
-                    </div> */}
+                    </div>
                     <p tabIndex={0} role="heading" aria-label="Login to your account" className="text-2xl text-center font-semibold tracking-widest leading-6 text-gray-800">
                         Account Sign In
                     </p>
@@ -89,7 +91,6 @@ const Signin = () => {
                     </p>
                     <form
                         onSubmit={handleSubmit(handleSigninform)}
-                        action=""
                         className="py-3"
                     >
                         <div className="space-y-12 w-full h-full mt-10 py-7">
@@ -115,7 +116,7 @@ const Signin = () => {
 
                                 <input {...register("password", {
                                     required: { value: true, message: "Password is Required" },
-                                    pattern: { value: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/, message: "Provide a Valid Password", },
+                                   
                                 })} placeholder=" " required name="password" type="password" id="floating_standard2" className="block py-2.5 px-2 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-700 appearance-none dark:border-gray-600 dark:focus:green-blue-500 focus:outline-none focus:ring-0 focus:border-gray-600 peer" />
                                 <label htmlFor="floating_standard2" className="absolute text-sm text-left w-full justify-start flex text-gray-700 dark:text-gray-700 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enter Your Password</label>
                             </div>
@@ -136,7 +137,7 @@ const Signin = () => {
                             </label>
                         </span>
                         <div className="mt-8">
-                            <button type='submit' role="button" aria-label="create my account" className="bg-gray-900 hover:bg-gray-700 btn btn-lg rounded-full font-semibold w-40 mx-auto text-white capitalize flex justify-center">
+                            <button type="submit" role="button" aria-label="create my account" className="bg-gray-900 hover:bg-gray-700 btn btn-lg rounded-full font-semibold w-40 mx-auto text-white capitalize flex justify-center">
                                 Sign In
                             </button>
                         </div>

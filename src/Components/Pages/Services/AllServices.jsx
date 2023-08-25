@@ -1,9 +1,9 @@
 import React from 'react';
-import useServices from '../../../Hooks/useServices';
+import UseServices from '../../../Hooks/useServices';
 import AllServicesGrid from './AllServicesGrid';
 
 const AllServices = () => {
-    const [services] = useServices();
+    const [services] = UseServices();
 
     console.log(services);
     return (

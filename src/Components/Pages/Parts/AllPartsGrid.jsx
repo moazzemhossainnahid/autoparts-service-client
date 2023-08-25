@@ -1,8 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const AllPartsGrid = ({ part }) => {
+    const navigate = useNavigate();
+
+    
   return (
-    <div className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
+    <div onClick={() => navigate(`/parts/${part?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
       <div className="mx-2 lg:mb-0 mb-8">
         <div>
           <img src={part?.image} className="w-full h-60" />
