@@ -1,6 +1,9 @@
 import React from "react";
 
 const AllStafsGrid = ({ staf }) => {
+
+  
+
   return (
     <div className="w-full mx-auto">
       <div className="card bg-base-100 shadow-xl">

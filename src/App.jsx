@@ -25,6 +25,7 @@ import ManageServices from './Components/Dashboard/AdminDashboard/ManageServices
 import ManageStafs from './Components/Dashboard/AdminDashboard/ManageStafs/ManageStafs'
 import SinglePartsDetails from './Components/Pages/Parts/SinglePartsDetails'
 import SingleServicesDetails from './Components/Pages/Services/SingleServicesDetails'
+import Success from './Components/Others/Success/Success'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -44,7 +45,7 @@ function App() {
             <Route path='/stafs' element={<Stafs />} />
             <Route path='/cart' element={<RequireAuth><Cart /></RequireAuth>} />
             {/* <Route path='/checkout' element={<RequireAuth><Checkout /></RequireAuth>} /> */}
-            {/* <Route path="/ssl-payment-success/:id" element={<RequireAuth><Success/></RequireAuth>} /> */}
+            <Route path="/ssl-payment-success/:id" element={<RequireAuth><Success/></RequireAuth>} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/profile' element={<Profile />} />

@@ -1,12 +1,46 @@
+import axios from "axios";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import auth from "../../../../firebase.init";
 
 const AllPartsGrid = ({ part }) => {
     const navigate = useNavigate();
+    const [user] = useAuthState(auth);
 
+    const confirmToPay = (event) => {
+
+      event.preventDefault();
+  
+      const info = {
+        item_name: part?.name,
+        item_desc: part?.description,
+        item_category: part?.category,
+        item_image: part?.image,
+        total_amount: part?.price,
+        cus_name: user?.displayName,
+        cus_email: user?.email
+  
+      }
+  
+      // console.log(info);
+  
+      axios.post(`http://localhost:5000/api/v1/ssl/init`, info)
+        .then(res => {
+          console.log(res.data);
+          if(res?.data){
+            window.location = res?.data
+          }
+        })
+  
+      // if (urlData?.data) {
+      //   window.location.href = urlData?.data
+      // }
+  
+    };
     
   return (
-    <div onClick={() => navigate(`/parts/${part?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
+    <div className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
       <div className="mx-2 lg:mb-0 mb-8">
         <div>
           <img src={part?.image} className="w-full h-60" />
@@ -65,6 +99,8 @@ const AllPartsGrid = ({ part }) => {
                 {part?.price}
               </h3>
             </div>
+            <button onClick={confirmToPay} className="btn btn-primary">Confirm to Pay</button>
+
           </div>
         </div>
       </div>
