@@ -9,7 +9,7 @@ const useServices = () => {
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,
             }
-        })
+        }) 
             .then(res => res.json())
             .then(data => setServices(data?.data?.result))
     }, []);

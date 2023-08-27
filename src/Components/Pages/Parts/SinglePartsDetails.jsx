@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import useParts from "../../../Hooks/useParts";
 import EmptyList from "../../Others/EmptyList/EmptyList";
 import Chip from "../../Others/Chip";
+import RelatedParts from "./RelatedParts";
 
 const SinglePartsDetails = () => {
   const navigate = useNavigate();
@@ -61,6 +62,7 @@ const SinglePartsDetails = () => {
           <EmptyList />
         )}
       </div>
+      <RelatedParts part={part} />
     </div>
   );
 };

@@ -38,10 +38,6 @@ const AllServicesGrid = ({ service }) => {
             <div className="w-full flex justify-start items-center">
               <h2 className="text-lg font-semibold">{service?.name}</h2>
             </div>
-            <div className="flex justify-between items-center pt-5">
-              <p className="text-xs text-gray-600">Stock:{service?.stock}</p>
-              <p className="text-xs text-gray-600 pl-5">4 days ago</p>
-            </div>
             <p className="text-xs text-gray-600 mt-2">
               {service?.description.slice(0, 150)}
             </p>
@@ -62,6 +58,7 @@ const AllServicesGrid = ({ service }) => {
                 {service?.sku.slice(0, 17)}
               </h2>
               <h3 className="text-indigo-700 text-xl font-semibold">
+              <span className="pr-1">&#2547;</span>
                 {service?.price}
               </h3>
             </div>
