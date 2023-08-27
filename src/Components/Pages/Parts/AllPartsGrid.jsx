@@ -5,44 +5,40 @@ import { useNavigate } from "react-router-dom";
 import auth from "../../../../firebase.init";
 
 const AllPartsGrid = ({ part }) => {
-    const navigate = useNavigate();
-    const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const [user] = useAuthState(auth);
 
-    const confirmToPay = (event) => {
+  const confirmToPay = (event) => {
+    event.preventDefault();
 
-      event.preventDefault();
-  
-      const info = {
-        item_name: part?.name,
-        item_desc: part?.description,
-        item_category: part?.category,
-        item_image: part?.image,
-        total_amount: part?.price,
-        cus_name: user?.displayName,
-        cus_email: user?.email
-  
-      }
-  
-      // console.log(info);
-  
-      axios.post(`http://localhost:5000/api/v1/ssl/init`, info)
-        .then(res => {
-          console.log(res.data);
-          if(res?.data){
-            window.location = res?.data
-          }
-        })
-  
-      // if (urlData?.data) {
-      //   window.location.href = urlData?.data
-      // }
-  
+    const info = {
+      item_name: part?.name,
+      item_desc: part?.description,
+      item_category: part?.category,
+      item_image: part?.image,
+      total_amount: part?.price,
+      cus_name: user?.displayName,
+      cus_email: user?.email,
     };
-    
+
+    // console.log(info);
+
+    axios.post(`http://localhost:5000/api/v1/ssl/init`, info).then((res) => {
+      console.log(res.data);
+      if (res?.data) {
+        window.location = res?.data;
+      }
+    });
+
+    // if (urlData?.data) {
+    //   window.location.href = urlData?.data
+    // }
+  };
+
   return (
     <div className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
       <div className="mx-2 lg:mb-0 mb-8">
-        <div>
+        <div className="h-60">
           <img src={part?.image} className="w-full h-60" />
         </div>
         <div className="bg-white">
@@ -70,7 +66,14 @@ const AllPartsGrid = ({ part }) => {
           </div>
           <div className="p-4">
             <div className="w-full flex justify-start items-center">
-              <h2 className="text-lg font-semibold">{part?.name}</h2>
+              {part?.name.length > 15 ? (
+                <h2 className="text-lg font-semibold">{`${part?.name.slice(
+                  0,
+                  15
+                )}...`}</h2>
+              ) : (
+                <h2 className="text-lg font-semibold">{`${part?.name}`}</h2>
+              )}
             </div>
             <div className="flex justify-between items-center pt-5">
               <p className="text-xs text-gray-600">Stock:{part?.stock}</p>
@@ -99,8 +102,6 @@ const AllPartsGrid = ({ part }) => {
                 {part?.price}
               </h3>
             </div>
-            <button onClick={confirmToPay} className="btn btn-primary">Confirm to Pay</button>
-
           </div>
         </div>
       </div>
