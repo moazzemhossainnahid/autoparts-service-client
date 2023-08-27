@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from "../../../../firebase.init";
 
+
 const AllPartsGrid = ({ part }) => {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
@@ -30,13 +31,10 @@ const AllPartsGrid = ({ part }) => {
       }
     });
 
-    // if (urlData?.data) {
-    //   window.location.href = urlData?.data
-    // }
   };
 
   return (
-    <div className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
+    <div onClick={() => navigate(`/parts/${part?._id}`)} className="w-full border shadow-lg cursor-pointer hover:shadow-2xl">
       <div className="mx-2 lg:mb-0 mb-8">
         <div className="h-60">
           <img src={part?.image} className="w-full h-60" />
@@ -99,6 +97,7 @@ const AllPartsGrid = ({ part }) => {
                 {part?.sku.slice(0, 17)}
               </h2>
               <h3 className="text-indigo-700 text-xl font-semibold">
+              <span className="pr-1">&#2547;</span>
                 {part?.price}
               </h3>
             </div>

@@ -46,7 +46,6 @@ const ManageServices = () => {
             name: data.name,
             category: data.category,
             price: data.price,
-            stock: data.stock,
             description: data.description,
             sku: newProductSku,
             image: img,
@@ -173,17 +172,11 @@ const ManageServices = () => {
               placeholder="Enter Service Price"
               className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
             />
-            <input
-              {...register("stock")}
-              type="text"
-              placeholder="Enter Service Stock"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
-            />
             <textarea
               {...register("description")}
               type="text"
               placeholder="Enter Service Description"
-              className="input bg-slate-100 my-2 input-ghost w-full block mx-auto max-w-xs"
+              className="input bg-slate-100 my-2 input-ghost w-full h-28 block mx-auto max-w-xs"
             />
             <input
               {...register("photoURL")}
