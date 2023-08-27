@@ -34,7 +34,7 @@ const AllStafsGrid = ({ staf }) => {
               {staf?.name}
             </div>
             <p className="text-gray-800 text-sm text-center">
-              <span className="font-bold">Age:</span> {staf?.age}
+              <span className="font-bold">Age:</span> {staf?.age} Years
             </p>
             <p className="text-gray-800 text-sm text-center">
               <span className="font-bold">Experience:</span> {staf?.experience}
