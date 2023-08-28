@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import Home from './Pages/Home/Home'
 import Cart from './Pages/Cart/Cart'
@@ -27,14 +25,14 @@ import SinglePartsDetails from './Components/Pages/Parts/SinglePartsDetails'
 import SingleServicesDetails from './Components/Pages/Services/SingleServicesDetails'
 import Success from './Components/Others/Success/Success'
 import Checkout from './Components/Pages/Checkout/Checkout'
+import ManageBookings from './Components/Dashboard/AdminDashboard/ManageBookings/ManageBookings'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
       <div className="App pt-20">
-        {(window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mparts' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf') && <Header />}
+        {(window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mparts' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf' && window.location.pathname !== '/cpanel/mbookings') && <Header />}
         {/* <Header /> */}
         <div className="">
           <Routes>
@@ -61,10 +59,11 @@ function App() {
               <Route path="mparts" element={<ManageParts />} />
               <Route path="mservices" element={<ManageServices />} />
               <Route path="mstafs" element={<ManageStafs />} />
+              <Route path="mbookings" element={<ManageBookings />} />
             </Route>
           </Routes>
         </div>
-        {(window.location.pathname !== '/cart' && window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mparts' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf') && <Footer />}
+        {(window.location.pathname !== '/cart' && window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mparts' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf' && window.location.pathname !== '/cpanel/mbookings') && <Footer />}
         <ToastContainer />
       </div>
     </>

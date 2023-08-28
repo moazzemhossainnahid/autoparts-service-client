@@ -11,6 +11,7 @@ const SinglePartsDetails = () => {
   const [parts] = useParts();
   const [part, setPart] = useState(null);
 
+
   useEffect(() => {
     let part = parts?.find((p) => p._id === id);
     if (part) {
@@ -19,8 +20,8 @@ const SinglePartsDetails = () => {
   }, [parts, id]);
 
   return (
-    <div className="w-full md:w-3/4 mx-auto">
-      <div className="container py-7">
+    <div className="w-full">
+      <div className="container py-7 w-full md:w-3/4 mx-auto">
         <button
           onClick={() => navigate(-1)}
           className="blog-goBack w-32 rounded mx-3 justify-start px-5 py-2 flex text-indigo-600 bg-gray-200"

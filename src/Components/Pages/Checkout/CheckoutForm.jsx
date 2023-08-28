@@ -36,6 +36,7 @@ const CheckoutForm = ({ item, setURLData, urlData }) => {
 
     axios.post(`http://localhost:5000/api/v1/ssl/init`, info)
       .then(res => {
+        console.log(res);
         if(res?.data){
           window.location = res?.data
         }

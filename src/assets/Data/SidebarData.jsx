@@ -1,4 +1,4 @@
-import { faBookAtlas, faBraille, faDashboard, faListCheck, faShoppingCart, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faBookAtlas, faBookmark, faBraille, faDashboard, faListCheck, faShoppingCart, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 export const SidebarData = [
     {
@@ -31,4 +31,9 @@ export const SidebarData = [
     //     href: "morders",
     //     icon: faListCheck,
     // },
+    {
+        title: "Manage Bookings",
+        href: "mbookings",
+        icon: faBookmark,
+    },
 ];
