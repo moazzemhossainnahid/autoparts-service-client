@@ -19,7 +19,7 @@ const SinglePartsDetails = () => {
   }, [parts, id]);
 
   return (
-    <div className="w-full">
+    <div className="w-full md:w-3/4 mx-auto">
       <div className="container py-7">
         <button
           onClick={() => navigate(-1)}
@@ -44,7 +44,7 @@ const SinglePartsDetails = () => {
             <div className="space-y-4">
               <h2 className="text-gray-500text-xs font-semibold">
                 Stock: {part?.stock}
-              </h2>            
+              </h2>
               <h2 className="text-indigo-700 text-xs font-semibold">
                 {part?.sku.slice(0, 17)}
               </h2>
@@ -56,6 +56,9 @@ const SinglePartsDetails = () => {
             </div>
             <div className="">
               <p className="blog-desc p-5 md:px-10">{part?.description}</p>
+            </div>
+            <div className="pt-7">
+              <button onClick={() => navigate(`/checkout/${part?._id}`)} className="btn btn-outline btn-secondary flex items-center justify-center mx-auto">Checkout this Item <span className="text-2xl -mt-1">&#8608;</span></button>
             </div>
           </div>
         ) : (
