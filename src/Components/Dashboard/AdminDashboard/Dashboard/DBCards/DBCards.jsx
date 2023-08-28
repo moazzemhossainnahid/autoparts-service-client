@@ -4,6 +4,7 @@ import {
   faBraille,
   faCartShopping,
   faListCheck,
+  faBookmark,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,6 +18,7 @@ const DBCards = () => {
   const [orders, setOrders] = useState([]);
   const [services, setServices] = useState([]);
   const [stafs, setStafs] = useState([]);
+  const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/v1/users`, {
@@ -71,6 +73,17 @@ const DBCards = () => {
     })
       .then((res) => res.json())
       .then((data) => setOrders(data));
+  }, []);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/v1/bookings`, {
+      method: "GET",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setBookings(data?.data?.result));
   }, []);
 
   console.log(stafs);
@@ -210,6 +223,33 @@ const DBCards = () => {
             </h2>
           </div>
         </div> */}
+
+        {/* Total Booking */}
+        <div className="">
+          <div className="flex items-center justify-between bg-[#ad5530] p-3 rounded-t-xl">
+            <div className="">
+              <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
+                {bookings?.length}{" "}
+              </h3>
+              <h3 className="text-md font-bold text-white">Total Bookings</h3>
+            </div>
+            <div className="">
+              <FontAwesomeIcon
+                className="text-[#42424281] text-3xl md:text-4xl"
+                icon={faBookmark}
+              />
+            </div>
+          </div>
+          <div
+            onClick={() => navigate("/cpanel/morders")}
+            className="bg-[#8f4626] cursor-pointer py-2 text-center rounded-b-xl"
+          >
+            <h2 className="text-md text-white">
+              More Info{" "}
+              <FontAwesomeIcon className="pl-2" icon={faArrowAltCircleRight} />{" "}
+            </h2>
+          </div>
+        </div>
       </div>
     </div>
   );
