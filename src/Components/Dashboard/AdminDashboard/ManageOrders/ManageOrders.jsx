@@ -13,10 +13,10 @@ const ManageOrders = () => {
     useEffect(() => {
         fetch('http://localhost:5000/api/v1/orders')
             .then(res => res.json())
-            .then(data => setOrders(data))
+            .then(data => setOrders(data?.data?.result))
     }, [number]);
 
-
+// console.log(orders);
         // Sort the array by createdAt in descending order
         orders?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 

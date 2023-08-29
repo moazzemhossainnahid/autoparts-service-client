@@ -26,13 +26,14 @@ import SingleServicesDetails from './Components/Pages/Services/SingleServicesDet
 import Success from './Components/Others/Success/Success'
 import Checkout from './Components/Pages/Checkout/Checkout'
 import ManageBookings from './Components/Dashboard/AdminDashboard/ManageBookings/ManageBookings'
+import ManageOrders from './Components/Dashboard/AdminDashboard/ManageOrders/ManageOrders'
 
 function App() {
 
   return (
     <>
       <div className="App pt-20">
-        {(window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mparts' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf' && window.location.pathname !== '/cpanel/mbookings') && <Header />}
+        {(window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mparts' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf' && window.location.pathname !== '/cpanel/mbookings' && window.location.pathname !== '/cpanel/morders') && <Header />}
         {/* <Header /> */}
         <div className="">
           <Routes>
@@ -44,7 +45,7 @@ function App() {
             <Route path='/stafs' element={<Stafs />} />
             <Route path='/cart' element={<RequireAuth><Cart /></RequireAuth>} />
             <Route path='/checkout/:id' element={<RequireAuth><Checkout /></RequireAuth>} />
-            <Route path="/ssl-payment-success/:id" element={<RequireAuth><Success/></RequireAuth>} />
+            <Route path="/ssl-payment-success" element={<RequireAuth><Success/></RequireAuth>} />
             <Route path='/signin' element={<Signin />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/profile' element={<Profile />} />
@@ -58,12 +59,13 @@ function App() {
               <Route path="musers" element={<ManageUsers />} />
               <Route path="mparts" element={<ManageParts />} />
               <Route path="mservices" element={<ManageServices />} />
+              <Route path="morders" element={<ManageOrders />} />
               <Route path="mstafs" element={<ManageStafs />} />
               <Route path="mbookings" element={<ManageBookings />} />
             </Route>
           </Routes>
         </div>
-        {(window.location.pathname !== '/cart' && window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mparts' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf' && window.location.pathname !== '/cpanel/mbookings') && <Footer />}
+        {(window.location.pathname !== '/cart' && window.location.pathname !== '/cpanel' && window.location.pathname !== '/cpanel/addashboard' && window.location.pathname !== '/cpanel/musers' && window.location.pathname !== '/cpanel/mparts' && window.location.pathname !== '/cpanel/mservices' && window.location.pathname !== '/cpanel/mstafs' && window.location.pathname !== '/cpanel/addparts' && window.location.pathname !== '/cpanel/addservice' && window.location.pathname !== '/cpanel/addstaf' && window.location.pathname !== '/cpanel/mbookings' && window.location.pathname !== '/cpanel/morders') && <Footer />}
         <ToastContainer />
       </div>
     </>

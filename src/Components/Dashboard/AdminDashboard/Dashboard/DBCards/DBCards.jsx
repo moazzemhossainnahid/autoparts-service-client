@@ -72,7 +72,7 @@ const DBCards = () => {
       },
     })
       .then((res) => res.json())
-      .then((data) => setOrders(data));
+      .then((data) => setOrders(data?.data?.result));
   }, []);
 
   useEffect(() => {
@@ -198,8 +198,8 @@ const DBCards = () => {
         </div>
 
         {/* Total Orders */}
-        {/* <div className="">
-          <div className="flex items-center justify-between bg-[#097c76] p-3 rounded-t-xl">
+        <div className="">
+          <div className="flex items-center justify-between bg-[#4040f5] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
                 {orders?.length}{" "}
@@ -215,14 +215,14 @@ const DBCards = () => {
           </div>
           <div
             onClick={() => navigate("/cpanel/morders")}
-            className="bg-[#00A099] cursor-pointer py-2 text-center rounded-b-xl"
+            className="bg-[#2c2c9c] cursor-pointer py-2 text-center rounded-b-xl"
           >
             <h2 className="text-md text-white">
               More Info{" "}
               <FontAwesomeIcon className="pl-2" icon={faArrowAltCircleRight} />{" "}
             </h2>
           </div>
-        </div> */}
+        </div>
 
         {/* Total Booking */}
         <div className="">

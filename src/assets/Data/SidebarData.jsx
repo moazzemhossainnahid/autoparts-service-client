@@ -26,11 +26,11 @@ export const SidebarData = [
         href: "mstafs",
         icon: faBookAtlas,
     },
-    // {
-    //     title: "Manage Orders",
-    //     href: "morders",
-    //     icon: faListCheck,
-    // },
+    {
+        title: "Manage Orders",
+        href: "morders",
+        icon: faListCheck,
+    },
     {
         title: "Manage Bookings",
         href: "mbookings",
