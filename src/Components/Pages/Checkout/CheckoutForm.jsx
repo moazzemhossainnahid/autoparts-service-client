@@ -23,24 +23,22 @@ const CheckoutForm = ({ item, setURLData, urlData }) => {
 
     const info = {
       item_name: item?.name,
-      item_desc: item?.desc,
+      item_desc: item?.description,
       item_category: item?.category,
-      item_image: item?.img,
+      item_image: item?.image,
       total_amount: (item?.price + item?.price / 100 * 5 + item?.price / 100 * 3).toFixed(2),
       cus_name: user?.displayName,
-      cus_email: user?.email
-
-    }
+      cus_email: user?.email,
+    };
 
     // console.log(info);
 
-    axios.post(`http://localhost:5000/api/v1/ssl/init`, info)
-      .then(res => {
-        console.log(res);
-        if(res?.data){
-          window.location = res?.data
+      axios.post(`http://localhost:5000/api/v1/ssl/init`, info).then((res) => {
+        console.log(res.data);
+        if (res?.data) {
+          window.location = res?.data;
         }
-      })
+      });
 
     // if (urlData?.data) {
     //   window.location.href = urlData?.data

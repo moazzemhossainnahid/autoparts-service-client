@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const Success = () => {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const { id } = useParams(); 
     const [item, setItem] = useState([]);
 
