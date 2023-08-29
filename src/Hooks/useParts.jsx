@@ -4,7 +4,7 @@ const useParts = () => {
     const [parts, setParts] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/v1/parts`, {
+        fetch(`https://autoparts-service-server.vercel.app/api/v1/parts`, {
             method: "GET",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,

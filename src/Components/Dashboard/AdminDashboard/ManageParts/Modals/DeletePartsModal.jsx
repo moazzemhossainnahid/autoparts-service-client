@@ -7,7 +7,7 @@ const DeletePartsModal = ({ deletePart, setNumber, number }) => {
 
 
     const handleDelete = (id) => {
-        const url = `http://localhost:5000/api/v1/parts/${id}`;
+        const url = `https://autoparts-service-server.vercel.app/api/v1/parts/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

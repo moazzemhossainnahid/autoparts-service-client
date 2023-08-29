@@ -8,7 +8,7 @@ const ManageBookings = () => {
   const [deleteBooking, setDeleteBooking] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/bookings")
+    fetch("https://autoparts-service-server.vercel.app/api/v1/bookings")
       .then((res) => res.json())
       .then((data) => setBookings(data?.data));
   }, [number]);

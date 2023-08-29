@@ -14,7 +14,7 @@ const ManageParts = () => {
   const imageUrlKey = "e738f1d16de6b265746b7f82cc157644";
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/parts")
+    fetch("https://autoparts-service-server.vercel.app/api/v1/parts")
       .then((res) => res.json())
       .then((data) => setParts(data?.data));
   }, [number]);
@@ -54,7 +54,7 @@ const ManageParts = () => {
           };
 
           // send to database
-          fetch(`http://localhost:5000/api/v1/parts`, {
+          fetch(`https://autoparts-service-server.vercel.app/api/v1/parts`, {
             method: "POST",
             headers: {
               "content-type": "application/json",

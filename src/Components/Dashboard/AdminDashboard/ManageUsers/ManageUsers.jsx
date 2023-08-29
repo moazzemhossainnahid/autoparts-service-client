@@ -9,7 +9,7 @@ const ManageUsers = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/users', {
+        fetch('https://autoparts-service-server.vercel.app/api/v1/users', {
             method: "GET",
             headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,
