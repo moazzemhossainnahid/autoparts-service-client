@@ -20,7 +20,7 @@ const Sidebar = () => {
 
   return (
     <div className="flex sticky bg-white -mt-20">
-      <div className={` ${open ? "w-72 h-screen" : "w-20 h-screen"} bg-[#EBEFEE] sticky p-5 duration-300`} >
+      <div className={` ${open ? "w-72 h-full min-h-screen" : "w-20 h-full min-h-screen"} bg-[#EBEFEE] sticky p-5 duration-300`} >
         <img src="https://i.ibb.co/CB1yQwj/kuba-arrow-button-set-2.png" className={`absolute cursor-pointer -right-3 top-9 w-9 border-dark-purple border-2 rounded-full  ${!open && "rotate-180"}`} onClick={handleOpenBar} alt="" />
         <div className="flex flex-col gap-x-4 items-center">
           {/* <img src="https://i.ibb.co/8NNvYfT/emotion.png" alt="logo" className={`cursor-pointer w-2/3 pb-5 mx-auto opacity-0 duration-500 ${open && " w-2/3 rotate-[360deg] opacity-100"}`} /> */}

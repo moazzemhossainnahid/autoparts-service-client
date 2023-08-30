@@ -241,7 +241,7 @@ const DBCards = () => {
             </div>
           </div>
           <div
-            onClick={() => navigate("/cpanel/morders")}
+            onClick={() => navigate("/cpanel/mbookings")}
             className="bg-[#8f4626] cursor-pointer py-2 text-center rounded-b-xl"
           >
             <h2 className="text-md text-white">

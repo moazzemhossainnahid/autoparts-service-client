@@ -67,7 +67,7 @@ const ManageOrdersRow = ({ order, index, setDeleteOrder, setConfirmOrder }) => {
             <label
               htmlFor="confirm-order-modal"
               onClick={() => setConfirmOrder(order)}
-              className="text-black rounded shadow-lg w-24 px-1 py-1 cursor-pointer text-xs bg-secondary "
+              className="text-black rounded shadow-lg w-24 px-1 mx-auto py-1 cursor-pointer text-xs bg-secondary "
             >
               Confirm Order
             </label>
