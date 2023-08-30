@@ -10,6 +10,7 @@ const ManageParts = () => {
   const [parts, setParts] = useState(null);
   const [deletePart, setDeletePart] = useState(null);
   const { register, handleSubmit, reset } = useForm();
+  const [allParts, setAllParts] = useState(false);
 
   const imageUrlKey = "e738f1d16de6b265746b7f82cc157644";
 
@@ -26,7 +27,7 @@ const ManageParts = () => {
     const randomChars = Math.random().toString(36).substring(2, 7); // Generate random alphanumeric characters
     const sku = `SKU-${timestamp}-${randomChars}`;
     return sku;
-  };
+  }
 
   const newProductSku = generateSku();
 
@@ -119,16 +120,38 @@ const ManageParts = () => {
             <tbody>
               {/* <!-- row 1 --> */}
 
-              {parts?.result?.map((part, index) => (
-                <ManagePartsRow
-                  key={part?._id}
-                  part={part}
-                  index={index}
-                  setDeletePart={setDeletePart}
-                ></ManagePartsRow>
-              ))}
+              {allParts
+                ? parts?.result?.map((part, index) => (
+                    <ManagePartsRow
+                      key={part?._id}
+                      part={part}
+                      index={index}
+                      setDeletePart={setDeletePart}
+                    ></ManagePartsRow>
+                  ))
+                : parts?.result
+                    ?.slice(0, 7)
+                    ?.map((part, index) => (
+                      <ManagePartsRow
+                        key={part?._id}
+                        part={part}
+                        index={index}
+                        setDeletePart={setDeletePart}
+                      ></ManagePartsRow>
+                    ))}
             </tbody>
           </table>
+          {parts?.result?.length > 7 && (
+            <div className="pt-7">
+              <button
+                onClick={() => setAllParts(!allParts)}
+                className="btn btn-outline btn-secondary flex items-center justify-center mx-auto"
+              >
+                {`${allParts ? "See Less Parts" : "See More Parts"}`}{" "}
+                <span className="text-2xl -mt-1">&#8608;</span>
+              </button>
+            </div>
+          )}
         </div>
         {deletePart && (
           <DeletePartsModal

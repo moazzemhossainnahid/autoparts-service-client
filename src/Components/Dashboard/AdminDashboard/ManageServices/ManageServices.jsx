@@ -9,6 +9,7 @@ const ManageServices = () => {
   const [services, setServices] = useState(null);
   const [deleteService, setDeleteService] = useState(null);
   const { register, handleSubmit, reset } = useForm();
+  const [allServices, setAllServices] = useState(false);
 
   const imageUrlKey = "e738f1d16de6b265746b7f82cc157644";
 
@@ -25,7 +26,7 @@ const ManageServices = () => {
     const randomChars = Math.random().toString(36).substring(2, 7); // Generate random alphanumeric characters
     const sku = `SKU-${timestamp}-${randomChars}`;
     return sku;
-  };
+  }
 
   const newProductSku = generateSku();
 
@@ -117,16 +118,38 @@ const ManageServices = () => {
             <tbody>
               {/* <!-- row 1 --> */}
 
-              {services?.result?.map((service, index) => (
-                <ManageServicesRow
-                  key={service?._id}
-                  service={service}
-                  index={index}
-                  setDeleteService={setDeleteService}
-                ></ManageServicesRow>
-              ))}
+              {allServices
+                ? services?.result?.map((service, index) => (
+                    <ManageServicesRow
+                      key={service?._id}
+                      service={service}
+                      index={index}
+                      setDeleteService={setDeleteService}
+                    ></ManageServicesRow>
+                  ))
+                : services?.result
+                    ?.slice(0, 7)
+                    ?.map((service, index) => (
+                      <ManageServicesRow
+                        key={service?._id}
+                        service={service}
+                        index={index}
+                        setDeleteService={setDeleteService}
+                      ></ManageServicesRow>
+                    ))}
             </tbody>
           </table>
+          {services?.result?.length > 7 && (
+            <div className="pt-7">
+              <button
+                onClick={() => setAllServices(!allServices)}
+                className="btn btn-outline btn-secondary flex items-center justify-center mx-auto"
+              >
+                {`${allServices ? "See Less Services" : "See More Services"}`}{" "}
+                <span className="text-2xl -mt-1">&#8608;</span>
+              </button>
+            </div>
+          )}
         </div>
         {deleteService && (
           <DeleteServicesModal

@@ -8,8 +8,7 @@ const ManageOrders = () => {
   const [orders, setOrders] = useState(null);
   const [confirmOrder, setConfirmOrder] = useState(null);
   const [deleteOrder, setDeleteOrder] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [dataPerPage] = useState(8);
+  const [allOrder, setAllOrder] = useState(false);
 
   useEffect(() => {
     fetch("https://autoparts-service-server.vercel.app/api/v1/orders")
@@ -21,22 +20,12 @@ const ManageOrders = () => {
   // Sort the array by createdAt in descending order
   orders?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-  // Get current data
-  const indexOfLastData = currentPage * dataPerPage;
-  const indexOfFirstData = indexOfLastData - dataPerPage;
-  const currentData = orders?.slice(indexOfFirstData, indexOfLastData);
-
-  // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  console.log(currentData);
-
   return (
     <div className=" text-left h-full w-full">
       <div className="w-full flex items-center justify-center my-12">
         <div className="bg-white shadow rounded py-12 px-8 mb-20">
           <p className="md:text-3xl text-xl font-bold pb-10 leading-7 text-center text-gray-700">
-            Total Orders: {currentData?.length}
+            Total Orders: {orders?.length}
           </p>
           <table className="border-collapse w-full bg-slate-200">
             {/* <!-- head --> */}
@@ -65,19 +54,43 @@ const ManageOrders = () => {
             <tbody>
               {/* <!-- row 1 --> */}
 
-              {currentData
-                ?.sort((a, b) => a - b)
-                ?.map((order, index) => (
-                  <ManageOrdersRow
-                    key={order._id}
-                    order={order}
-                    index={index}
-                    setDeleteOrder={setDeleteOrder}
-                    setConfirmOrder={setConfirmOrder}
-                  ></ManageOrdersRow>
-                ))}
+              {allOrder
+                ? orders
+                    ?.sort((a, b) => a - b)
+                    ?.map((order, index) => (
+                      <ManageOrdersRow
+                        key={order._id}
+                        order={order}
+                        index={index}
+                        setDeleteOrder={setDeleteOrder}
+                        setConfirmOrder={setConfirmOrder}
+                      ></ManageOrdersRow>
+                    ))
+                : orders
+                    ?.slice(0, 7)
+                    ?.sort((a, b) => a - b)
+                    ?.map((order, index) => (
+                      <ManageOrdersRow
+                        key={order._id}
+                        order={order}
+                        index={index}
+                        setDeleteOrder={setDeleteOrder}
+                        setConfirmOrder={setConfirmOrder}
+                      ></ManageOrdersRow>
+                    ))}
             </tbody>
           </table>
+          {orders?.result?.length > 7 && (
+            <div className="pt-7">
+              <button
+                onClick={() => setAllOrder(!allOrder)}
+                className="btn btn-outline btn-secondary flex items-center justify-center mx-auto"
+              >
+                {`${allOrder ? "See Less Orders" : "See More Orders"}`}{" "}
+                <span className="text-2xl -mt-1">&#8608;</span>
+              </button>
+            </div>
+          )}
         </div>
         {deleteOrder && (
           <DeleteOrderModal

@@ -6,6 +6,7 @@ const ManageBookings = () => {
   const [number, setNumber] = useState(0);
   const [bookings, setBookings] = useState(null);
   const [deleteBooking, setDeleteBooking] = useState(null);
+  const [allBookings, setAllBookings] = useState(false);
 
   useEffect(() => {
     fetch("https://autoparts-service-server.vercel.app/api/v1/bookings")
@@ -24,19 +25,41 @@ const ManageBookings = () => {
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5 mx-auto">
             {/* <!-- row 1 --> */}
 
-            {bookings?.result?.map((booking, index) => (
-              <ManageBookingsRow
-                key={booking?._id}
-                booking={booking}
-                index={index}
-                setDeleteBooking={setDeleteBooking}
-              ></ManageBookingsRow>
-            ))}
+            {allBookings
+              ? bookings?.result?.map((booking, index) => (
+                  <ManageBookingsRow
+                    key={booking?._id}
+                    booking={booking}
+                    index={index}
+                    setDeleteBooking={setDeleteBooking}
+                  ></ManageBookingsRow>
+                ))
+              : bookings?.result
+                  ?.slice(0, 4)
+                  ?.map((booking, index) => (
+                    <ManageBookingsRow
+                      key={booking?._id}
+                      booking={booking}
+                      index={index}
+                      setDeleteBooking={setDeleteBooking}
+                    ></ManageBookingsRow>
+                  ))}
           </div>
+          {bookings?.result?.length > 4 && (
+            <div className="pt-7">
+              <button
+                onClick={() => setAllBookings(!allBookings)}
+                className="btn btn-outline btn-secondary flex items-center justify-center mx-auto"
+              >
+                {`${allBookings ? "See Less Bookings" : "See More Bookings"}`}{" "}
+                <span className="text-2xl -mt-1">&#8608;</span>
+              </button>
+            </div>
+          )}
         </div>
         {deleteBooking && (
           <DeleteBookingsModal
-          deleteBooking={deleteBooking}
+            deleteBooking={deleteBooking}
             setNumber={setNumber}
             number={number}
           ></DeleteBookingsModal>
