@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ManageOrdersRow from "./ManageOrdersRow";
 import DeleteOrderModal from "./Modals/DeleteOrderModal";
 import ConfirmOrderModal from "./Modals/ConfirmOrderModal";
-import Pagination from "../../../Others/Pagination/Pagination";
 
 const ManageOrders = () => {
   const [number, setNumber] = useState(0);
@@ -10,7 +9,7 @@ const ManageOrders = () => {
   const [confirmOrder, setConfirmOrder] = useState(null);
   const [deleteOrder, setDeleteOrder] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [dataPerPage] = useState(10);
+  const [dataPerPage] = useState(8);
 
   useEffect(() => {
     fetch("https://autoparts-service-server.vercel.app/api/v1/orders")
@@ -25,17 +24,19 @@ const ManageOrders = () => {
   // Get current data
   const indexOfLastData = currentPage * dataPerPage;
   const indexOfFirstData = indexOfLastData - dataPerPage;
-  const currentPosts = orders?.slice(indexOfFirstData, indexOfLastData);
+  const currentData = orders?.slice(indexOfFirstData, indexOfLastData);
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  console.log(currentData);
 
   return (
     <div className=" text-left h-full w-full">
       <div className="w-full flex items-center justify-center my-12">
         <div className="bg-white shadow rounded py-12 px-8 mb-20">
           <p className="md:text-3xl text-xl font-bold pb-10 leading-7 text-center text-gray-700">
-            Total Orders: {orders?.length}
+            Total Orders: {currentData?.length}
           </p>
           <table className="border-collapse w-full bg-slate-200">
             {/* <!-- head --> */}
@@ -64,12 +65,12 @@ const ManageOrders = () => {
             <tbody>
               {/* <!-- row 1 --> */}
 
-              {orders
+              {currentData
                 ?.sort((a, b) => a - b)
                 ?.map((order, index) => (
                   <ManageOrdersRow
                     key={order._id}
-                    order={currentPosts}
+                    order={order}
                     index={index}
                     setDeleteOrder={setDeleteOrder}
                     setConfirmOrder={setConfirmOrder}
@@ -77,11 +78,6 @@ const ManageOrders = () => {
                 ))}
             </tbody>
           </table>
-          <Pagination
-            dataPerPage={dataPerPage}
-            totalData={orders?.length}
-            paginate={paginate}
-          />
         </div>
         {deleteOrder && (
           <DeleteOrderModal
