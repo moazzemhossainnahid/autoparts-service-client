@@ -80,9 +80,7 @@ const Signin = () => {
         <div className="h-full bg-white w-full px-4">
             <div className="flex flex-col items-center justify-center">
                 <div className="bg-white rounded md:w-2/3 w-full p-10 ">
-                    <div className="w-full mx-auto py-7">
-                        <img src="https://i.ibb.co/7VySsQR/logo.png" alt="" className="w-52 mx-auto" />
-                    </div>
+
                     <p tabIndex={0} role="heading" aria-label="Login to your account" className="text-2xl text-center font-semibold tracking-widest leading-6 text-gray-800">
                         Account Sign In
                     </p>
