@@ -31,6 +31,8 @@ const DBCards = () => {
       .then((data) => setUsers(data));
   }, []);
 
+  const OtherUsers = users?.filter(u => u?.role !== "superadmin");
+
   useEffect(() => {
     fetch(`https://autoparts-service-server.vercel.app/api/v1/parts`, {
       method: "GET",
@@ -86,7 +88,7 @@ const DBCards = () => {
       .then((data) => setBookings(data?.data?.result));
   }, []);
 
-  console.log(stafs);
+  // console.log(stafs);
 
   return (
     <div className="">
@@ -96,7 +98,7 @@ const DBCards = () => {
           <div className="flex items-center justify-between bg-[#252525] p-3 rounded-t-xl">
             <div className="">
               <h3 className="text-3xl md:text-4xl font-bold py-2 text-white">
-                {users?.length}
+                {OtherUsers?.length}
               </h3>
               <h3 className="text-md font-bold text-white">Total Users</h3>
             </div>
